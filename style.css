@@ -1,6 +1,1044 @@
-background: rgba( 120, 80, 163, 0.3 );
-box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
-backdrop-filter: blur( 5.5px );
--webkit-backdrop-filter: blur( 5.5px );
-border-radius: 10px;
-border: 1px solid rgba( 255, 255, 255, 0.18 );
+@charset "UTF-8";
+/* --------------------------------------------------
+   Template by espace（https://espace.monbalcon.net/）
+   Copyright: 2020 espace.
+
+   利用規約を遵守の上、ご利用ください。
+   二次配布、販売は禁止しています。
+   --------------------------------------------------*/
+
+/* ----- ▼ リセット　ここから（基本的には触らない方が良い部分） ▼ ----- */
+@font-face {
+  font-family: "icon-sns-espace";
+  src: url("../fonts/icon-sns-espace.eot?xhj2at");
+  src: url("../fonts/icon-sns-espace.eot?xhj2at#iefix") format("embedded-opentype"),
+    url("../fonts/icon-sns-espace.ttf?xhj2at") format("truetype"),
+    url("../fonts/icon-sns-espace.woff?xhj2at") format("woff"),
+    url("../fonts/icon-sns-espace.svg?xhj2at#icon-sns-espace") format("svg");
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+:focus {
+  outline: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+a,
+a::after,
+a::before,
+button,
+button::after,
+button::before,
+input,
+textarea,
+select {
+  transition: all 0.3s;
+}
+
+a img,
+button img {
+  transition-duration: 0.35s;
+}
+
+button {
+  outline: none;
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+  cursor: hand;
+}
+
+input,
+textarea,
+select {
+  font-size: 1.6rem;
+}
+
+input,
+textarea {
+  box-shadow: none;
+  -webkit-appearance: none;
+}
+
+select {
+  appearance: button;
+}
+
+p,
+dl,
+ul,
+form {
+  margin: 25px 0;
+  word-break: break-all;
+}
+
+p:last-child,
+dl:last-child,
+ul:last-child,
+form:last-child {
+  margin-bottom: 0;
+}
+
+img {
+  vertical-align: middle;
+}
+
+@media only screen and (max-width: 900px) {
+  p,
+  form {
+    margin: 0 0 1.7rem;
+  }
+  p:last-child,
+  form:last-child {
+    margin-bottom: 0;
+  }
+}
+/* ----- ▲ リセット　ここまで（基本的には触らない方が良い部分） ▲ ----- */
+
+/* ----- ▼ レイアウト　ここから ▼ ----- */
+/* 基本 */
+html::before,
+html::after,
+body::before,
+body::after {
+  content: "";
+  display: block;
+  position: fixed;
+  background: #177066dc;
+  z-index: 1;
+}
+
+html::before,
+html::after {
+  width: 5px;
+  height: calc(100% - 90px);
+  top: 45px;
+}
+
+html::before {
+  left: 45px;
+}
+
+html::after {
+  right: 45px;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+body::before,
+body::after {
+  width: calc(100% - 90px);
+  height: 5px;
+  left: 45px;
+}
+
+body::before {
+  top: 45px;
+}
+
+body::after {
+  bottom: 45px;
+}
+
+body,
+button,
+input,
+textarea,
+select {
+  font: 500 1.4rem / calc(1.4rem + 1.05rem) "Yu Gothic", Meiryo, "Hiragino Kaku Gothic ProN", sans-serif;
+  color: #676965;
+}
+
+header,
+footer,
+main {
+  width: calc(100% - 300px);
+  margin: auto;
+}
+
+header,
+footer {
+  text-align: center;
+}
+
+header {
+  position: sticky;
+  top: -90px;
+  padding-top: 18px;
+  height: 90px;
+  transition: 0.3s;
+}
+
+header.scroll {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  width: calc(100% - 150px);
+  z-index: 1;
+  transform: translateY(68px);
+}
+
+main {
+  width: calc(100% - 300px);
+  max-width: 650px;
+  min-height: calc(100vh - 395px);
+  margin-top: 50px;
+}
+
+main.no_header {
+  min-height: calc(100vh - 305px);
+}
+
+main > :first-child > h2:first-child,
+main > :first-child h3:first-child,
+main > :first-child h4:first-child {
+  margin-top: 0;
+}
+
+footer {
+  width: calc(100% - 300px);
+  min-height: 105px;
+  margin-top: 150px;
+  padding: 15px;
+  background: #177066dc;
+}
+
+footer a {
+  color: #fff;
+}
+
+a {
+  color: #f759a5;
+}
+
+a:hover {
+  opacity: 0.5;
+}
+
+/* メニュー */
+.menu ul {
+  display: flex;
+  justify-content: space-around;
+  padding: 0;
+  list-style: none;
+}
+
+.menu ul a {
+  display: inline-block;
+  min-width: 100px;
+  padding: 10px 0;
+  background: #177066dc;
+  color: #fff;
+  opacity: 1;
+}
+
+.menu ul a:hover {
+  background: #b0e2dd;
+}
+
+.manu-toggler {
+  display: none;
+}
+
+.fixed-menu {
+  position: fixed;
+  bottom: 49px;
+  right: 49px;
+}
+
+.fixed-menu ul {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.fixed-menu a,
+.fixed-menu button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: #177066dc !important;
+  color: #fff !important;
+}
+
+.fixed-menu a::before,
+.fixed-menu button::before {
+  font: 900 16px/1 "Font Awesome 5 Free";
+}
+
+.fixed-menu a:hover,
+.fixed-menu button:hover {
+  opacity: 0.5;
+}
+
+.fixed-menu .pagetop a::before,
+.fixed-menu .pagetop button::before {
+  content: "\f106";
+}
+
+.fixed-menu .prev a::before,
+.fixed-menu .prev button::before {
+  content: "\f104";
+}
+
+.fixed-menu .next::before {
+  content: none;
+}
+
+.fixed-menu .next a::before,
+.fixed-menu .next button::before {
+  content: "\f105";
+}
+
+.fixed-menu .toc a::before,
+.fixed-menu .toc button::before {
+  content: "\f0ca";
+}
+
+.fixed-menu .home a::before,
+.fixed-menu .home button::before {
+  content: "\f015";
+}
+
+@media only screen and (max-width: 900px) {
+  .menu,
+  .manu-toggler {
+    position: fixed;
+    transition: 0.3s;
+    z-index: 1;
+  }
+  .menu {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #fff;
+    opacity: 0;
+    transform: scale(0);
+  }
+  .menu ul {
+    display: block;
+  }
+  .menu ul a {
+    width: calc(100vw - 150px);
+  }
+  .menu.open {
+    opacity: 1;
+    transform: scale(1);
+  }
+  .manu-toggler {
+    display: block;
+    width: 40px;
+    height: 40px;
+    top: 25px;
+    right: 25px;
+    background: #177066dc;
+  }
+  .manu-toggler::before,
+  .manu-toggler::after {
+    content: "";
+    position: absolute;
+    left: 5px;
+    top: 20px;
+    width: 30px;
+    height: 1px;
+    background: #fff;
+  }
+  .manu-toggler.open::before {
+    transform: rotate(-45deg);
+  }
+  .manu-toggler.open::after {
+    transform: rotate(45deg);
+  }
+  .fixed-menu {
+    bottom: 60px;
+    right: 25px;
+  }
+  .fixed-menu ul {
+    flex-direction: row;
+  }
+}
+
+/* 見出し */
+h1 {
+  margin: 0;
+  font: 500 italic 5rem/1 "Jost", sans-serif;
+}
+
+h1 a {
+  color: #177066dc;
+}
+
+h2,
+h3 {
+  text-align: center;
+}
+
+h2 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 150px auto 100px;
+  padding: 150px 0 0 0;
+  font-size: 2.2rem;
+  color: #177066dc;
+  letter-spacing: 10px;
+}
+
+h2::before,
+h2::after {
+  content: "";
+  display: block;
+  width: 150px;
+  height: 3px;
+  background: #177066dc;
+  transform: rotate(-5deg);
+  z-index: -1;
+}
+
+h2::before {
+  margin-bottom: 30px;
+}
+
+h2::after {
+  margin-top: 30px;
+}
+
+h3 {
+  position: relative;
+  margin: 100px auto 85px;
+  color: #177066dc;
+  font-size: 1.6rem;
+  letter-spacing: 5px;
+  z-index: -1;
+}
+
+h3::before {
+  content: "";
+  position: absolute;
+  display: block;
+  width: 80px;
+  height: 80px;
+  background: #f2f2f2;
+  top: calc(50% - 40px);
+  left: calc(50% - 40px);
+  z-index: -1;
+}
+
+h3:nth-of-type(odd)::before {
+  border-radius: 50% 70% 50% 80%;
+}
+
+h3:nth-of-type(even)::before {
+  border-radius: 70% 50% 60% 50%;
+}
+
+h4 {
+  margin: 70px auto 30px;
+  border-bottom: 3px solid #f2f2f2;
+  font-size: 1.4rem;
+  color: #177066dc;
+}
+
+h5 {
+  font-size: 1.4rem;
+  color: #177066dc;
+}
+
+/* リスト */
+ul .description,
+ol .description {
+  margin-left: 10px;
+}
+
+ul .description::before,
+ol .description::before {
+  content: "…";
+  margin-right: 10px;
+}
+
+ul li.next {
+  list-style: none;
+}
+
+ul li.next::before {
+  content: "→";
+  margin-right: 5px;
+  font-size: 120%;
+}
+
+ul.small {
+  list-style: none;
+  padding-left: 0;
+}
+
+ul.small li {
+  display: inline;
+}
+
+ul.small li::before {
+  color: #f759a5;
+}
+
+ul.small li:not(:first-child):not(.next)::before {
+  margin: 0 5px 0 2px;
+  content: ":";
+  font-weight: 900;
+}
+
+ul.small li.next::before {
+  margin: 0 7px 0 2px;
+}
+
+dl {
+  margin: 10px 0;
+}
+
+dl dd {
+  margin: 0 0 15px;
+  padding: 0 0 15px 40px;
+  border-bottom: 1px solid #bddceb;
+}
+
+dl dd:last-of-type {
+  margin-bottom: 0;
+  padding-bottom: 0;
+  border-bottom: 0;
+}
+
+dl.inline {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+dl.inline dt,
+dl.inline dd {
+  vertical-align: top;
+  margin: 0 0 15px 0;
+  padding: 0 0 15px;
+}
+
+dl.inline dt:last-of-type,
+dl.inline dd:last-of-type {
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+dl.inline dt {
+  width: 200px;
+  padding: 0 30px 10px 0;
+  padding-right: 30px;
+  border-bottom: 1px solid #bddceb;
+}
+
+dl.inline dt:last-of-type {
+  border-bottom: 0;
+}
+
+dl.inline dd {
+  width: calc(100% - 200px - 30px);
+}
+
+dl.border {
+  padding: 15px 20px;
+  border: 1px solid #bddceb;
+  border-radius: 0.25rem;
+}
+
+/* フォーム */
+.form-inline > *,
+.form-block > * {
+  margin-bottom: 5px;
+}
+
+.form-block dl dt,
+.form-block dl dd {
+  border-bottom: 0;
+}
+
+.form-block dl.inline dt {
+  width: 130px;
+}
+
+.form-block dl.inline dd {
+  width: calc(100% - 130px - 30px);
+}
+
+.form-block > *,
+.form-block dl dd > * {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.required::after {
+  content: "*";
+  color: #f759a5;
+}
+
+input,
+textarea,
+select,
+button:not(.manu-toggler),
+input[type="submit"],
+input[type="button"] {
+  border-radius: 0.25rem;
+}
+
+input::placeholder,
+textarea::placeholder,
+select::placeholder,
+button:not(.manu-toggler)::placeholder,
+input[type="submit"]::placeholder,
+input[type="button"]::placeholder {
+  color: #bddceb;
+}
+
+input,
+textarea,
+select {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  border: 1px solid #177066dc;
+  box-sizing: border-box;
+  background: transparent;
+}
+
+input:hover,
+input:focus,
+textarea:hover,
+textarea:focus,
+select:hover,
+select:focus {
+  border: 1px solid #bddceb;
+}
+
+button:not(.manu-toggler),
+input[type="submit"],
+input[type="button"] {
+  background: #177066dc;
+  border: 1px solid #177066dc;
+  color: #fff;
+}
+
+button:not(.manu-toggler):hover,
+input[type="submit"]:hover,
+input[type="button"]:hover {
+  border-color: #bddceb;
+  background: #bddceb;
+}
+
+/* 装飾 */
+b,
+em,
+strong {
+  font-weight: bold;
+}
+
+em {
+  font-style: normal;
+  background: linear-gradient(transparent 50%, #feee7d 50%);
+}
+
+strong {
+  background: #feee7d;
+}
+
+hr {
+  width: 50%;
+  height: 3px;
+  margin: 100px auto;
+  border: 0;
+  background: #177066dc;
+}
+
+.text-left {
+  text-align: left;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.text-bold {
+  font-weight: bold;
+}
+
+.text-small {
+  font-size: smaller;
+}
+
+/* コンテンツエリア */
+.area.area-icon {
+  margin: 15px auto;
+  width: 150px;
+  height: 150px;
+  overflow: hidden;
+  object-fit: cover;
+}
+
+.area.area-icon img {
+  object-fit: cover;
+  max-width: 100%;
+  min-height: 100%;
+}
+
+.area.area-icon.type-circle {
+  border-radius: 50%;
+}
+
+.area.area-icon.type-rounded {
+  border-radius: 8px;
+}
+
+.area.area-icon.size-sm {
+  width: 100px;
+  height: 100px;
+}
+
+.area.area-icon.size-lg {
+  width: 200px;
+  height: 200px;
+}
+
+.area.area-link a {
+  display: inline-block;
+  margin: 3px 1px;
+  padding: 7px 10px;
+  background: #f2f2f2;
+  border-radius: 5px;
+  color: #000;
+}
+
+.area.area-link a::before {
+  margin-right: 5px;
+  font-family: "Font Awesome 5 Free", "Font Awesome 5 Brands";
+  font-weight: 900;
+}
+
+.area.area-link a i {
+  margin-right: 5px;
+}
+
+.area.area-link a hr {
+  margin: 5px 0;
+  width: 100%;
+  height: 1px;
+  background: #ddd;
+  border: 0;
+}
+
+.area.area-link.link-icon a,
+.area.area-link.link-icon-circle a {
+  width: 38px;
+  text-align: center;
+}
+
+.area.area-link.link-icon a::before,
+.area.area-link.link-icon-circle a::before {
+  margin-right: 0;
+}
+
+.area.area-link.link-icon a i,
+.area.area-link.link-icon-circle a i {
+  margin-right: 0;
+}
+
+.area.area-link.link-icon-circle a {
+  border-radius: 50%;
+}
+
+.area.area-link.link-block a {
+  display: block;
+  margin: 6px 1px;
+}
+
+.area.area-link.link-block + .link-column {
+  margin-top: -3px;
+}
+
+.area.area-link.link-column {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.area.area-link.link-column a {
+  width: calc(50% - 4px);
+}
+
+.area.area-link.link-column + .link-block {
+  margin-top: -3px;
+}
+
+.area.area-link.link-color a {
+  color: #fff;
+  background: #555;
+}
+
+.area.area-link.link-color a.twitter {
+  background: #1da1f2;
+}
+
+.area.area-link.link-color a.facebook {
+  background: #1877f2;
+}
+
+.area.area-link.link-color a.instagram {
+  background: #e4405f;
+}
+
+.area.area-link.link-color a.tumblr {
+  background: #39475d;
+}
+
+.area.area-link.link-color a.pinterest {
+  background: #bd081c;
+}
+
+.area.area-link.link-color a.youtube {
+  background: #da1725;
+}
+
+
+
+.area.area-link.link-color a.discord {
+  background: #5865f2;
+}
+
+
+
+
+
+
+.area.area-link.link-color a hr {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.area .web::before {
+  content: "\f0ac";
+}
+
+.area .heart::before {
+  content: "\f004";
+}
+
+.area .star::before {
+  content: "\f005";
+}
+
+.area .bookmark::before {
+  content: "\f02e";
+}
+
+.area .book::before {
+  content: "\f02d";
+}
+
+.area .image::before {
+  content: "\f03e";
+}
+
+.area .twitter::before,
+.area .facebook::before,
+.area .instagram::before,
+.area .tumblr::before,
+.area .pinterest::before,
+.area .youtube::before,
+.area .skype::before,
+.area .discord::before,
+.area .steam::before {
+  font-weight: 400 !important;
+}
+
+.area .twitter::before {
+  content: "\f099";
+}
+
+.area .facebook::before {
+  content: "\f09a";
+}
+
+.area .instagram::before {
+  content: "\f16d";
+}
+
+.area .tumblr::before {
+  content: "\f173";
+}
+
+.area .pinterest::before {
+  content: "\f0d2";
+}
+
+.area .youtube::before {
+  content: "\f167";
+}
+
+.area .skype::before {
+  content: "\f17e";
+}
+
+.area .discord::before {
+  content: "\f392";
+}
+
+.area .steam::before {
+  content: "\f1b6";
+}
+
+.area .marshmallow::before,
+.area .pixiv::before {
+  font-family: "icon-sns-espace" !important;
+  font-weight: normal !important;
+}
+
+.area .marshmallow:before {
+  content: "";
+}
+
+.area .pixiv:before {
+  content: "";
+}
+
+/* スマホ設定 */
+@media only screen and (max-width: 900px) {
+  html::before,
+  html::after {
+    height: calc(100% - 40px);
+    top: 20px;
+  }
+  html::before {
+    left: 20px;
+  }
+  html::after {
+    right: 20px;
+  }
+  body {
+    margin: 0;
+    padding: 0;
+  }
+  body::before,
+  body::after {
+    width: calc(100% - 40px);
+    left: 20px;
+  }
+  body::before {
+    top: 20px;
+  }
+  body::after {
+    bottom: 20px;
+  }
+  body,
+  button,
+  input,
+  textarea,
+  select {
+    font-size: 1.4rem;
+    line-height: calc(1.4rem + 1.05rem);
+  }
+  header {
+    width: calc(100% - 80px);
+    height: auto;
+  }
+  main {
+    width: calc(100% - 90px);
+  }
+  footer {
+    width: calc(100% - 100px);
+    min-height: 45px;
+    padding: 0;
+  }
+  /* 見出し */
+  h1 {
+    position: fixed;
+    top: -2px;
+    left: 0;
+    width: 100%;
+    font-size: 4.2rem;
+  }
+  h2 {
+    margin: 100px auto;
+    padding: 100px 0 0 0;
+    font-size: 2rem;
+  }
+  /* リスト */
+  ul .description,
+  ol .description {
+    display: block;
+    margin-left: 10px;
+  }
+  ul .description::before,
+  ol .description::before {
+    content: "└";
+    margin-right: 10px;
+  }
+  dl.border dt,
+  dl.border dd,
+  dl.inline dt,
+  dl.inline dd {
+    display: block;
+  }
+  dl.border dt,
+  dl.inline dt {
+    width: 100%;
+    margin-bottom: 0;
+    padding-bottom: 0;
+    border-bottom: 0;
+  }
+  dl.border dd,
+  dl.inline dd {
+    width: 100%;
+    padding-left: 40px;
+  }
+  /* フォーム */
+  .form-inline input {
+    width: 45%;
+  }
+  .form-block dl.inline dt {
+    width: 100%;
+  }
+  .form-block dl.inline dd {
+    width: calc(100% - 40px);
+    padding-left: 40px;
+  }
+  .form-block > *,
+  .form-block dl dd > * {
+    width: 100%;
+    box-sizing: border-box;
+    margin-bottom: 5px;
+  }
+}
+/* ----- ▲ レイアウト　ここまで ▲ ----- */
